@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orphanage Signup | Food Serve</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #fffde4;
+      margin: 0;
+      letter-spacing: 0.7px;
+      text-shadow: 1px 1px 8px #00000040;
+    }
+    nav {
+      margin-top: 9px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      font-size: 1.06rem;
+      border-radius: 6px;
+      padding: 2px 12px;
+      transition: color 0.18s, background 0.18s;
+      background: transparent;
+    }
+    nav a.active, nav a:hover {
+      color: #2ecc71;
+      background: rgba(44, 62, 80, 0.22);
+    }
+    .signup-section {
+      max-width: 440px;
+      width: 97vw;
+      margin: 34px auto 0 auto;
+      background: rgba(40, 44, 52, 0.36);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+      border: 1.2px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(13px);
+      -webkit-backdrop-filter: blur(13px);
+      padding: 32px 20px 26px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .signup-section h2 {
+      color: #ffe086;
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-shadow: 0 1px 8px #00000033;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    label {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 12px;
+      margin-bottom: 3px;
+      color: #f4f3ec;
+      text-align: left;
+      letter-spacing: 0.19px;
+    }
+    input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 8px;
+      border: 1.2px solid rgba(255,255,255,0.13);
+      background: rgba(40, 44, 52, 0.13);
+      color: #fff;
+      font-size: 1em;
+      margin-bottom: 2px;
+      transition: border 0.16s;
+      box-sizing: border-box;
+      outline: none;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #64b5f6;
+      background: rgba(40, 44, 52, 0.28);
+    }
+    input[type="file"] {
+      margin-top: 8px;
+      margin-bottom: 3px;
+      padding: 8px 0;
+      color: #bdbdbd;
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    input[type="file"]::-webkit-file-upload-button {
+      background: linear-gradient(90deg, #64b5f6 0%, #232526 100%);
+      border: none;
+      border-radius: 9px;
+      padding: 8px 18px;
+      color: #111;
+      font-weight: 600;
+      font-family: 'Poppins', Arial, sans-serif;
+      cursor: pointer;
+      margin-right: 12px;
+      font-size: 1em;
+      transition: background 0.2s, color 0.2s;
+    }
+    input[type="file"]:hover::-webkit-file-upload-button {
+      background: linear-gradient(90deg, #1976d2 80%, #414345 100%);
+      color: #fff;
+    }
+    button[type="submit"] {
+      background: linear-gradient(90deg,#64b5f6 0%, #232526 100%);
+      color: #161616;
+      border: none;
+      font-weight: 700;
+      font-size: 1.07rem;
+      border-radius: 8px;
+      padding: 13px 0;
+      width: 100%;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 12px rgba(100,181,246,0.13);
+      margin-top: 22px;
+      transition: background 0.19s, color 0.17s;
+      display: block;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg,#1976d2 80%, #414345 100%);
+      color: #fff;
+    }
+    .optional-note {
+      color: #ffd363;
+      font-size: 0.97em;
+      margin-top: 2px;
+      margin-bottom: 7px;
+      text-align: left;
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 18px 0 6px 0;
+      letter-spacing: 0.5px;
+      color: #b0b0b0;
+      font-size: 1rem;
+      margin-top: 36px;
+      background: rgba(44, 62, 80, 0.26);
+      backdrop-filter: blur(7px);
+      border-top: 1.2px solid rgba(255,255,255,0.06);
+    }
+    @media (max-width: 600px) {
+      header { margin-top: 13px; }
+      .signup-section { padding: 13px 8px 14px 8px; }
+      .signup-section h2 { font-size: 1.01rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Food Serve – Bridging Hearts Through Food</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="donor_signup.html">Donor Signup</a>
+      <a href="orphanage_signup.html" class="active">Orphanage Signup</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="signup-section">
+    <h2>Orphanage Registration 🏠</h2>
+    <form id="orphanageSignupForm" enctype="multipart/form-data" autocomplete="off">
+      <label for="orphanage_name">Orphanage Name:</label>
+      <input type="text" name="orphanage_name" id="orphanage_name" required>
+
+      <label for="license_no">License Number:</label>
+      <input type="text" name="license_no" id="license_no" required>
+
+      <label for="owner_name">Owner Name:</label>
+      <input type="text" name="owner_name" id="owner_name" required>
+
+      <label for="owner_age">Owner Age:</label>
+      <input type="number" name="owner_age" id="owner_age" required>
+
+      <label for="contact">Contact:</label>
+      <input type="text" name="contact" id="contact" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+
+      <label for="location">Location:</label>
+      <input type="text" name="location" id="location" required>
+
+      <label for="orphanage_photo">Orphanage Photo: <span class="optional-note">(optional)</span></label>
+      <input type="file" name="orphanage_photo" id="orphanage_photo" accept="image/*">
+
+      <button type="submit">Register</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Food Connect. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("orphanageSignupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+
+      try {
+        const response = await fetch("backend/orphanage_signup.php", {
+          method: "POST",
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.status === "success") {
+          alert("✅ Orphanage registered successfully! You can now log in.");
+          e.target.reset();
+          window.location.href = "login.html";
+        } else {
+          alert("❌ " + result.message);
+        }
+      } catch (error) {
+        alert("⚠️ Error connecting to server.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Food Serve – Bridging Hearts Through Food</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      text-align: center;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.7px;
+      margin: 0;
+      color: #fffde4;
+      text-shadow: 1px 1px 8px #00000040;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      font-size: 1.06rem;
+      border-radius: 6px;
+      padding: 2px 12px;
+      transition: color 0.18s, background 0.18s;
+      background: transparent;
+    }
+    nav a.active {
+      color: #2ecc71;
+      background: rgba(44, 62, 80, 0.32);
+    }
+    nav a.logout {
+      color: #e74c3c;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      cursor: pointer;
+    }
+    nav a.logout:hover {
+      background: rgba(231, 76, 60, 0.22);
+      color: #ff7964;
+    }
+    .donate-section {
+      max-width: 420px;
+      width: 97vw;
+      margin: 38px auto 0 auto;
+      background: rgba(40, 44, 52, 0.34);
+      backdrop-filter: blur(13px);
+      border-radius: 17px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.17);
+      padding: 34px 22px 24px 22px;
+      text-align: center;
+      border: 1.2px solid rgba(255,255,255,0.10);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .donate-section form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .donate-section h2 {
+      color: #ffe086;
+      font-size: 1.26rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-shadow: 0 1px 7px #00000035;
+    }
+    .donate-section p:not(.note) {
+      color: #cae6ff;
+      font-size: 0.98rem;
+      margin-bottom: 15px;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      text-align: left;
+      color: #e0e0e0;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+    }
+    input[type="text"],input[type="tel"],input[type="datetime-local"] {
+      width: 100%;
+      padding: 11px 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1.2px solid rgba(255,255,255,0.1);
+      background: rgba(40, 44, 52, 0.15);
+      color: #fff;
+      font-size: 1em;
+      outline: none;
+      margin-bottom: 2px;
+      transition: border 0.18s;
+      box-sizing: border-box;
+    }
+    .donate-section input[type="datetime-local"]::-webkit-input-placeholder,
+    .donate-section input[type="datetime-local"]::placeholder {
+      color: #bbb;
+      opacity: 1;
+    }
+    input:focus {
+      border-color: #64b5f6;
+      background: rgba(40, 44, 52, 0.35);
+    }
+    button[type="submit"] {
+      background: linear-gradient(90deg,#64b5f6 0%, #232526 100%);
+      color: #161616;
+      border: none;
+      font-weight: 700;
+      font-size: 1.06rem;
+      border-radius: 8px;
+      padding: 13px 0;
+      width: 100%;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 12px rgba(100,181,246,0.15);
+      margin-top: 25px;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg,#1976d2 80%, #414345 100%);
+      color: #fff;
+    }
+    .note {
+      font-size: 13px;
+      color: #ffd363;
+      margin-top: 7px;
+      margin-bottom: 8px;
+      text-align: center;
+      letter-spacing: 0.1px;
+    }
+    .activity-btn {
+      display: inline-block;
+      background: linear-gradient(90deg,#47b7f7 0% , #1e282e 100%);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 17px;
+      font-size: 1rem;
+      letter-spacing: 0.6px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 14px #47b7f760;
+      width: 100%;
+      max-width: 250px;
+    }
+    .activity-btn:hover {
+      background: linear-gradient(90deg,#1e282e 0%, #47b7f7 100%);
+      color: #161616;
+      box-shadow: 0 4px 20px #47b7f780;
+    }
+    .status-section {
+      margin: 24px auto 0 auto;
+      max-width: 420px;
+      text-align: center;
+      background: rgba(40,44,52,0.28);
+      backdrop-filter: blur(10px);
+      padding: 21px 22px 13px 22px;
+      border-radius: 16px;
+      border: 1.1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 0 14px rgba(0,0,0,0.11);
+      font-size: 1.05em;
+      color: #fff;
+    }
+    .status-section h3 {
+      color: #ffe086;
+      font-size: 1.06rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .no-accept {
+      color: #e74c3c;
+      font-weight: 600;
+    }
+    .popup, .logout-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.43);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .popup-content, .logout-content {
+      background: rgba(40, 44, 52, 0.97);
+      color: #fff;
+      padding: 32px 38px 22px 38px;
+      border-radius: 13px;
+      text-align: center;
+      box-shadow: 0 2px 18px #23252665;
+      min-width: 260px;
+    }
+    .popup-content h3,
+    .logout-content h3 {
+      color: #2ecc71;
+      margin: 0 0 10px 0;
+      font-size: 1.19em;
+    }
+    .logout-content p {
+      margin: 0 0 26px 0;
+      font-size: 1.07em;
+      color: #fff;
+    }
+    .logout-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+    }
+    .logout-btn-yes {
+      padding: 10px 26px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .logout-btn-yes:hover {
+      background: #b62034;
+    }
+    .logout-btn-no {
+      padding: 10px 26px;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .logout-btn-no:hover {
+      background: #444;
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 18px 0 6px 0;
+      letter-spacing: 0.5px;
+      color: #b0b0b0;
+      font-size: 1rem;
+      margin-top: 36px;
+      background: rgba(44, 62, 80, 0.26);
+      backdrop-filter: blur(7px);
+      border-top: 1.2px solid rgba(255,255,255,0.06);
+    }
+    @media (max-width: 600px) {
+      .donate-section, .status-section {
+        padding: 16px 5vw;
+        max-width: 98vw;
+      }
+      header { margin-top: 13px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Food Serve – Bridging Hearts Through Food</h1>
+    <nav>
+      <a href="#" class="logout" id="logoutBtn">Log Out</a>
+      <a href="donate.html" class="active">Donate</a>
+    </nav>
+  </header>
+
+  <!-- Donate Form Section -->
+  <section class="donate-section">
+    <h2>Donate Food</h2>
+    <p>Please fill out the details below to share your food donation.</p>
+    <form id="donateForm" autocomplete="off">
+      <label for="foodName">Food Name:</label>
+      <input type="text" id="foodName" placeholder="e.g., Vegetable Rice" required>
+      <label for="quantity">Quantity (How many people):</label>
+      <input type="text" id="quantity" placeholder="e.g., 10 people" required>
+      <label for="location">Pickup Location:</label>
+      <input type="text" id="location" placeholder="e.g., ABC Hotel, Chennai" required>
+      <label for="contact">Contact Number:</label>
+      <input type="tel" id="contact" placeholder="e.g., 9876543210" required>
+      <label for="preparedTime">Prepared Time:</label>
+      <input type="datetime-local" id="preparedTime" required>
+      <p class="note">⚠️ Note: This post will automatically expire after 6 hours.</p>
+      <button type="submit">Post Donation</button>
+    </form>
+    <div style="text-align:center;width:100%;">
+      <a href="see_activity.html" class="activity-btn">📊 See My Activity</a>
+    </div>
+  </section>
+
+  <!-- Donation Status Section -->
+  <section id="donationStatus" class="status-section" style="display:none;">
+    <h3>Donation Status</h3>
+    <p id="statusText">Checking for acceptance...</p>
+  </section>
+
+  <!-- Success Popup -->
+  <div id="successPopup" class="popup" style="display:none;">
+    <div class="popup-content">
+      <h3>✅ Thank You!</h3>
+      <p>Your food donation post was submitted successfully.</p>
+    </div>
+  </div>
+
+  <!-- Logout Popup -->
+  <div id="logoutPopup" class="logout-popup" style="display:none;">
+    <div class="logout-content">
+      <h3>Log Out</h3>
+      <p>Are you sure to log out?</p>
+      <div class="logout-buttons">
+        <button class="logout-btn-yes" id="confirmLogout">Yes</button>
+        <button class="logout-btn-no" id="cancelLogout">No</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Food Connect. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Logout Popup functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('logoutPopup').style.display = "flex";
+    });
+    document.getElementById('cancelLogout').addEventListener('click', function() {
+      document.getElementById('logoutPopup').style.display = "none";
+    });
+    document.getElementById('confirmLogout').addEventListener('click', function() {
+      localStorage.clear();
+      window.location.href = "index.html";
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const donateForm = document.getElementById("donateForm");
+      const popup = document.getElementById("successPopup");
+      const donationStatus = document.getElementById("donationStatus");
+      const statusText = document.getElementById("statusText");
+      let statusInterval;
+
+      // ✅ Handle donation form submission
+      donateForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const donorId = localStorage.getItem("user_id");
+        if (!donorId) {
+          alert("⚠️ Please login before donating!");
+          window.location.href = "login.html";
+          return;
+        }
+        const payload = {
+          donor_id: donorId,
+          foodName: document.getElementById("foodName").value.trim(),
+          quantity: document.getElementById("quantity").value.trim(),
+          location: document.getElementById("location").value.trim(),
+          contact: document.getElementById("contact").value.trim(),
+          preparedTime: document.getElementById("preparedTime").value
+        };
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(payload.contact)) {
+          alert("📞 Please enter a valid 10-digit contact number!");
+          return;
+        }
+        try {
+          const response = await fetch("http://localhost/food_donation_project/backend/save_donation.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          if (result.status === "success") {
+            popup.style.display = "flex";
+            setTimeout(() => popup.style.display = "none", 3000);
+            donateForm.reset();
+            donationStatus.style.display = "block";
+            statusText.innerText = "⏳ Waiting for orphanage acceptance...";
+            clearInterval(statusInterval);
+            checkDonationStatus(result.donation_id);
+            statusInterval = setInterval(() => checkDonationStatus(result.donation_id), 10000);
+          } else {
+            alert("❌ " + result.message);
+          }
+        } catch (error) {
+          alert("⚠️ Failed to connect to server. Please ensure XAMPP is running.");
+          console.error(error);
+        }
+      });
+
+      // ✅ Check donation status
+      async function checkDonationStatus(donationId) {
+        try {
+          const response = await fetch(`http://localhost/food_donation_project/backend/get_donation_status.php?id=${donationId}`);
+          const data = await response.json();
+
+          if (data.status === "success") {
+            if (data.accepted_by) {
+              statusText.innerHTML = `🎉 <b>${data.accepted_by}</b> has accepted your donation!`;
+              statusText.classList.remove("no-accept");
+              clearInterval(statusInterval);
+            } else {
+              statusText.innerHTML = "⚠️ No orphanage has accepted this donation yet.";
+              statusText.classList.add("no-accept");
+            }
+          } else {
+            statusText.innerHTML = "⚠️ Unable to fetch donation status.";
+          }
+        } catch (err) {
+          console.error("Error checking donation status:", err);
+          statusText.innerHTML = "⚠️ Server not responding...";
+        }
+      }
+    });
+  </script>
+</body>
+</html>

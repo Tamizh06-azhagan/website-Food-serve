@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Serve | Bridging Hearts Through Food</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+    }
+
+    /* ---------------- MAIN CARD ---------------- */
+    .container {
+      width: 92%;
+      max-width: 980px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(40, 44, 52, 0.40);
+      backdrop-filter: blur(15px);
+      padding: 45px 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+      margin-bottom: 25px;
+    }
+
+    /* ---------------- LEFT SIDE ---------------- */
+    .left-box {
+      width: 45%;
+      text-align: center;
+    }
+
+    .welcome-text {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #ffe086;
+      margin-bottom: 12px;
+    }
+
+    .left-box img {
+      width: 120px;
+      margin-top: 5px;
+      filter: drop-shadow(0 6px 16px #00000080);
+    }
+
+    .left-box h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      margin-top: 12px;
+      color: #fffde4;
+      text-shadow: 0 0 10px #0004;
+    }
+
+    .left-box p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-top: 5px;
+      color: #ffe086;
+    }
+
+    .divider {
+      width: 2px;
+      height: 300px;
+      background: linear-gradient(to bottom, transparent, #ffffff80, transparent);
+    }
+
+    /* ---------------- RIGHT SIDE ---------------- */
+    form {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    form h2 {
+      text-align: center;
+      color: #ffe086;
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px #0003;
+    }
+
+    label {
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    /* INPUTS */
+    .input-box {
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(32,36,40,0.8);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+      transition: 0.25s ease;
+    }
+
+    input:focus {
+      border-color: #90caf9;
+      background: rgba(32,36,40,0.95);
+    }
+
+    /* EYE ICON */
+    .toggle-eye {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      cursor: pointer;
+      color: #ddd;
+    }
+
+    /* LOGIN BUTTON */
+    button {
+      padding: 12px;
+      margin-top: 5px;
+      background: linear-gradient(90deg, #64b5f6 0%, #232526 100%);
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #1976d2 80%, #414345 100%);
+      color: white;
+    }
+
+    .signup-text {
+      text-align: center;
+      color: #90caf9;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .signup-links {
+      text-align: center;
+      margin-top: -4px;
+    }
+
+    .signup-links a {
+      color: #90caf9;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    .signup-links a:hover {
+      color: #ffeb3b;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      color: #ccc;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 780px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .left-box, form {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left-box">
+      <div class="welcome-text">Welcome To</div>
+      <img src="Logo.jpeg" alt="Food Serve Logo">
+      <h1>Food Serve</h1>
+      <p>Bridging Hearts Through Food</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RIGHT SIDE -->
+    <form id="loginForm">
+      <h2>Sign In</h2>
+
+      <label>Email</label>
+      <input type="email" id="email" required>
+
+      <label>Password</label>
+      <div class="input-box">
+        <input type="password" id="password" required>
+        <span class="toggle-eye" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <button type="submit">Login</button>
+
+      <div class="signup-text">Are you new?</div>
+
+      <div class="signup-links">
+        <a href="donor_signup.html">Donor Signup</a> |
+        <a href="orphanage_signup.html">Orphanage Signup</a>
+      </div>
+    </form>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Food Connect. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function togglePassword() {
+      const pass = document.getElementById("password");
+      pass.type = pass.type === "password" ? "text" : "password";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("⚠️ Please fill all fields!");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost/food_donation_project/backend/login.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          localStorage.setItem("user_id", result.id);
+          localStorage.setItem("role", result.role);
+
+          if (result.role === "donor") window.location.href = "donation.html";
+          if (result.role === "orphanage") window.location.href = "orphanage.html";
+
+        } else {
+          alert("❌ " + result.message);
+        }
+
+      } catch (err) {
+        alert("⚠️ Unable to connect to server!");
+      }
+    });
+  </script>
+
+</body>
+</html>

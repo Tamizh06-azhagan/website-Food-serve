@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Donation Activity | Food Serve</title>
+
+    <style>
+        body {
+            background-color: #1e1e1e;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background: #2c2c2c;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: 34px;
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background: #0d47a1;
+        }
+        .status-accepted {
+            color: rgb(0,255,0);
+            font-weight: bold;
+        }
+        .status-pending {
+            color: orange;
+            font-weight: bold;
+        }
+        .back-btn {
+            margin-top: 25px;
+            padding: 12px 22px;
+            background: #1976d2;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background: #0d47a1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Food Serve – Bridging Hearts Through Food</h1>
+
+    <div class="container">
+        <h2>📊 My Donation Activity</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Quantity</th>
+                    <th>Pickup Location</th>
+                    <th>Prepared Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="donationList">
+                <tr><td colspan="5">Loading your donations...</td></tr>
+            </tbody>
+        </table>
+
+        <button class="back-btn" onclick="window.location.href='donation.html'">⬅ Back to Donate</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const donationList = document.getElementById("donationList");
+            const userId = localStorage.getItem("user_id");
+            const role = localStorage.getItem("role");
+
+            if (!userId || role !== "donor") {
+                alert("Please login as donor to see your activity.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            try {
+                const response = await fetch(
+                    `http://localhost/food_donation_project/backend/get_donation_by_donor.php?donor_id=${userId}`
+                );
+
+                const data = await response.json();
+
+                if (data.status === "success" && data.donations.length > 0) {
+                    donationList.innerHTML = "";
+                    data.donations.forEach(donation => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${donation.food_name}</td>
+                            <td>${donation.quantity}</td>
+                            <td>${donation.location}</td>
+                            <td>${donation.prepared_time}</td>
+                            <td class="${donation.status === 'accepted' ? 'status-accepted' : 'status-pending'}">
+                                ${donation.status === 'accepted' ? '✅ Accepted' : '⏳ Pending'}
+                            </td>
+                        `;
+                        donationList.appendChild(row);
+                    });
+                } else {
+                    donationList.innerHTML =
+                        `<tr><td colspan="5">No donations found.</td></tr>`;
+                }
+
+            } catch (error) {
+                donationList.innerHTML =
+                    `<tr><td colspan="5">⚠️ Error connecting to server.</td></tr>`;
+            }
+        });
+        console.log("RAW RESPONSE →", data);
+
+    </script>
+
+</body>
+</html>

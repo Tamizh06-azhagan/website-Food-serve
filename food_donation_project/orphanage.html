@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orphanage Dashboard | Food Serve</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 40px;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 0.8px;
+      color: #fffde4;
+      text-shadow: 1px 1px 8px #0006;
+    }
+
+    nav {
+      margin-top: 12px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      font-size: 1.06rem;
+      border-radius: 6px;
+      padding: 2px 12px;
+      transition: color 0.18s, background 0.18s;
+      background: transparent;
+    }
+
+    nav a.active, nav a:hover {
+      color: #2ecc71;
+      background: rgba(44, 62, 80, 0.32);
+    }
+
+    .dashboard-section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 24px 0 0 0;
+    }
+
+    /* CENTER POPUP */
+    .center-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      padding: 22px 35px;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 0 22px rgba(0,0,0,0.4);
+      opacity: 0;
+      z-index: 9999;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .center-popup.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* INFO BANNER */
+    .info-banner {
+      background: rgba(44,62,80,0.23);
+      color: #ffe18b;
+      font-weight: 600;
+      letter-spacing: 0.23px;
+      border-left: 6px solid #fbc02d;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 22px;
+      margin-top: 7px;
+      text-align: left;
+      font-size: 1.02em;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 11px 18px 11px 17px;
+      box-shadow: 0 3px 18px #1a1a1a14;
+      display: flex;
+      align-items: center;
+    }
+
+    .info-banner .info-icon {
+      margin-right: 9px;
+      font-size: 1.27em;
+      color: #ffce46;
+      flex-shrink: 0;
+    }
+
+    /* SEARCH BAR */
+    .search-bar-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 17px;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .search-bar {
+      width: 99%;
+      max-width: 410px;
+      background: rgba(40,44,52,0.27);
+      border-radius: 13px;
+      border: 1.1px solid rgba(255,255,255,0.10);
+      outline: none;
+      font-size: 1.10em;
+      color: #fff;
+      padding: 14px 17px 14px 43px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 14px #23252625;
+
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='7' stroke='%23a3a3a3' stroke-width='2'/%3E%3Cpath d='M15 15L19 19' stroke='%23a3a3a3' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 13px 11px;
+    }
+
+    /* DONATION LIST */
+    .donation-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      justify-items: center;
+      margin-bottom: 36px;
+      padding: 5px 18px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .donation-card {
+      background: rgba(40, 44, 52, 0.33);
+      backdrop-filter: blur(13px);
+      border-radius: 16px;
+      border: 1.5px solid rgba(255,255,255,0.10);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.19);
+      max-width: 340px;
+      width: 100%;
+      color: #fff;
+      padding: 28px 20px 18px 20px;
+      text-align: left;
+      transition: transform 0.25s;
+    }
+
+    .accept-btn {
+      margin-top: 11px;
+      background: linear-gradient(90deg,#64b5f6 0%, #232526 100%);
+      color: #161616;
+      border: none;
+      font-weight: 700;
+      font-size: 1.06rem;
+      border-radius: 8px;
+      padding: 10px 0;
+      width: 120px;
+      cursor: pointer;
+    }
+
+    /* GREEN TOP POPUP */
+    .accepted-popup {
+      position: fixed;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #28a745;
+      color: #fff;
+      font-size: 1.17em;
+      font-weight: bold;
+      padding: 18px 38px;
+      border-radius: 0 0 13px 13px;
+      box-shadow: 0 4px 18px #28a74566;
+      opacity: 0;
+      z-index: 5000;
+      animation: popdown-green 1.5s;
+      pointer-events: none;
+    }
+
+    @keyframes popdown-green {
+  0% {top: -60px; opacity: 0;}
+  10% {top: 0px; opacity: 1;}
+  80% {top: 0; opacity: 1;}
+  100% {top: -60px; opacity: 0;}
+}
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Food Serve – Bridging Hearts Through Food</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#" class="active">Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="dashboard-section">
+
+    <div class="info-banner">
+      <span class="info-icon">⚠️</span>
+      Every food donation is available only for 6 hours. Accept wisely.
+    </div>
+
+    <div class="search-bar-container">
+      <input class="search-bar" id="donationSearch" type="text" placeholder="Search by place..." />
+    </div>
+
+    <div id="noDonationsMsg" class="no-donations-msg" style="display:none;">
+      Sorry !! 😢 no donation at this place
+    </div>
+
+    <h2>Available Food Donations 🍱</h2>
+
+    <div id="donationList" class="donation-list">
+      <p>Loading donations...</p>
+    </div>
+
+    <h2 style="margin-top:14px;margin-bottom:32px;font-size:1.14rem;">Accepted Donations ✅</h2>
+
+    <div id="acceptedList" class="donation-list"></div>
+
+  </section>
+
+  <footer>
+    <p>© 2025 Food Connect. All rights reserved.</p>
+  </footer>
+
+  <!-- TOP SUCCESS POPUP -->
+  <div id="acceptedPopup" class="accepted-popup" style="display:none;">
+    ✅ Donation accepted!
+  </div>
+
+  <!-- CENTER POPUP -->
+  <div id="centerPopup" class="center-popup">
+    Thank you for connecting with us 😊<br>Successfully accepted!!
+  </div>
+
+  <script src="js/script.js"></script>
+
+  <script>
+    // SEARCH BAR FILTER
+    document.getElementById('donationSearch').addEventListener('input', function() {
+      const searchValue = this.value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.donation-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const loc = card.querySelector("p:nth-child(3)")?.innerText.toLowerCase();
+        if (!searchValue || loc.includes(searchValue)) {
+          card.style.display = "";
+          visible++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      document.getElementById('noDonationsMsg').style.display = visible ? "none" : "block";
+    });
+
+    // SHOW TOP POPUP
+    function showAcceptedPopup() {
+      const pop = document.getElementById("acceptedPopup");
+      pop.style.display = "block";
+      pop.style.animation = "popdown-green 4s";
+
+      setTimeout(() => {
+        pop.style.display = "none";
+      }, 1500);
+    }
+
+    // CENTER POPUP
+    function showCenterPopup() {
+      const pop = document.getElementById("centerPopup");
+      pop.classList.add("show");
+      setTimeout(() => pop.classList.remove("show"), 4500);
+    }
+
+    // 🔥 AUTO DETECT ACCEPT BUTTON CLICK  
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("accept-btn")) {
+        showAcceptedPopup();
+        showCenterPopup();
+      }
+    });
+  </script>
+
+</body>
+</html>

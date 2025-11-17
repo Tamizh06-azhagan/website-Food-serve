@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Serve – Bridging Hearts Through Food</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    /* BIG Square-ish Card */
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      padding: 70px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 60px;
+
+      background: rgba(40,44,52,0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      border-radius: 22px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      border: 1.5px solid rgba(255,255,255,0.08);
+    }
+
+    /* Left Section */
+    .left {
+      width: 40%;
+      text-align: center;
+    }
+
+    .left img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 3px 8px #00000070);
+    }
+
+    .left h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.6rem;
+      color: #fffde4;
+      margin: 0;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 8px #0000004f;
+    }
+
+    .left p {
+      font-size: 1.2rem;
+      margin-top: 12px;
+      color: #ffd363;
+      font-weight: 600;
+    }
+
+    /* Right Section */
+    .right {
+      width: 60%;
+      text-align: left;
+    }
+
+    .right h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffd363;
+      margin-bottom: 14px;
+    }
+
+    .right p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #e8f4ff;
+      max-width: 420px;
+      margin-bottom: 30px;
+    }
+
+    /* Center Button */
+    .center-btn {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .right button {
+      background: linear-gradient(90deg,#47b7f7 0% , #1e282e 100%);
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 40px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 20px #47b7f780;
+    }
+
+    .right button:hover {
+      background: linear-gradient(90deg,#1e282e 0%, #47b7f7 100%);
+      color: #141414;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      color: #b0b0b0;
+      font-size: 1rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 850px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 30px;
+      }
+
+      .left, .right {
+        width: 100%;
+      }
+
+      .right {
+        text-align: center;
+      }
+
+      .center-btn {
+        justify-content: center;
+      }
+
+      .right p {
+        margin: 0 auto 25px auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Main Card -->
+  <div class="container">
+
+    <!-- Left Side -->
+    <div class="left">
+      <img src="Logo.jpeg" alt="Food Serve Logo">
+      <h1>Food Serve</h1>
+      <p>Bridging Hearts Through Food</p>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right">
+      <h2>Share Food, Spread Happiness ❤️</h2>
+      <p>Connecting donors with orphanages and old-age homes to reduce food waste and bring more smiles to the world.</p>
+
+      <div class="center-btn">
+        <button onclick="window.location.href='login.html'">Get Started</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Food Connect. All rights reserved.
+  </footer>
+
+</body>
+</html>

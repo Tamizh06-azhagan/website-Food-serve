@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donor Signup | Food Serve</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      text-align: center;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #fffde4;
+      margin: 0;
+      letter-spacing: 0.7px;
+      text-shadow: 1px 1px 8px #00000040;
+    }
+    nav {
+      margin-top: 12px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 500;
+      font-size: 1.06rem;
+      border-radius: 6px;
+      padding: 4px 14px;
+      transition: color 0.18s, background 0.18s;
+      background: transparent;
+    }
+    nav a.active, nav a:hover {
+      color: #2ecc71;
+      background: rgba(44, 62, 80, 0.28);
+    }
+    .donate-section {
+      max-width: 420px;
+      width: 97vw;
+      margin: 40px auto 36px auto;
+      background: rgba(40, 44, 52, 0.36);
+      border-radius: 17px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      border: 1.2px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(13px);
+      padding: 33px 22px 29px 22px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .donate-section h2 {
+      color: #ffe086;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-shadow: 0 1px 9px #00000038;
+    }
+    form label {
+      font-weight: 600;
+      font-size: 1em;
+      color: #d1d1d1;
+      margin-bottom: 7px;
+      display: block;
+      text-align: left;
+      letter-spacing: 0.2px;
+    }
+    form input {
+      width: 100%;
+      border-radius: 8px;
+      border: 1.2px solid rgba(255,255,255,0.1);
+      background: rgba(40, 44, 52, 0.15);
+      color: #fff;
+      font-size: 1.05em;
+      padding: 11px 13px;
+      margin-bottom: 18px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    form input:focus {
+      border-color: #64b5f6;
+      background: rgba(40, 44, 52, 0.35);
+    }
+    button[type="submit"] {
+      background: linear-gradient(90deg,#64b5f6 0%, #232526 100%);
+      color: #121212;
+      font-weight: 700;
+      font-size: 1.07rem;
+      border-radius: 8px;
+      padding: 13px 0;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 1px 14px rgba(100,181,246,0.3);
+      transition: background 0.24s ease-in-out, color 0.24s ease-in-out;
+      margin-top: 14px;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg,#1976d2 80%, #414345 100%);
+      color: #fff;
+      box-shadow: 0 0 22px #64b5f6ba;
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 18px 0 14px 0;
+      letter-spacing: 0.5px;
+      color: #b0b0b0;
+      font-size: 1rem;
+      background: rgba(44, 62, 80, 0.32);
+      backdrop-filter: blur(6px);
+      border-top: 1.2px solid rgba(255,255,255,0.07);
+      margin-top: auto;
+    }
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 1.35rem;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 1rem;
+        padding: 3px 10px;
+      }
+      .donate-section {
+        max-width: 96vw;
+        margin: 26px auto 26px auto;
+        padding: 26px 18px 22px 18px;
+      }
+      form input {
+        font-size: 1rem;
+        padding: 9px 11px;
+        margin-bottom: 14px;
+      }
+      button[type="submit"] {
+        font-size: 1rem;
+        padding: 11px 0;
+        margin-top: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Food Serve – Bridging Hearts Through Food</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="donate-section">
+    <h2>Donor Registration 🧑‍🍳</h2>
+    <form id="donorSignupForm" autocomplete="off">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required />
+
+      <label for="contact">Contact:</label>
+      <input type="text" id="contact" name="contact" maxlength="10" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required />
+
+      <button type="submit">Register</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Food Connect. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("donorSignupForm");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const age = document.getElementById("age").value.trim();
+        const contact = document.getElementById("contact").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const location = document.getElementById("location").value.trim();
+
+        if (!name || !age || !contact || !email || !password || !location) {
+          alert("❌ Please fill in all fields!");
+          return;
+        }
+
+        if (!/^[0-9]{10}$/.test(contact)) {
+          alert("📞 Please enter a valid 10-digit contact number!");
+          return;
+        }
+
+        try {
+          const response = await fetch("http://localhost/food_donation_project/backend/donor_signup.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name,
+              age,
+              contact,
+              email,
+              password,
+              location
+            }),
+          });
+
+          const result = await response.json();
+
+          if (result.status === "success") {
+            alert("✅ Donor registered successfully! You can now log in.");
+            form.reset();
+            window.location.href = "login.html";
+          } else {
+            alert("❌ " + result.message);
+          }
+        } catch (error) {
+          alert("⚠️ Error connecting to server!");
+          console.error(error);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
